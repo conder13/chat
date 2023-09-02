@@ -1,0 +1,156 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<style>
+.openBtn {
+  position:absolute;
+  top:0;
+  right:0;
+}
+.openButton {
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  cursor: pointer;
+}
+.loginPopup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.formPopup {
+  display: none;
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  transform: translate(-50%, 5%);
+  border: none;
+  z-index: 9;
+}
+.formContainer {
+  max-width: 300px;
+  padding: 20px;
+  background-color:  010101;
+}
+.formContainer input[type=text],
+.formContainer input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  border: none;
+  background: #eee;
+}
+.formContainer input[type=text]:focus,
+.formContainer input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.formContainer .btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: #010101;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+.formContainer .cancel {
+  background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
+}
+#start img {
+  width:100px;
+  height:100px;
+}
+#messageboard {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    font-family: 'Metal Mania', cursive;
+    color: white;
+}
+
+#messageboard li {
+    margin: 5px 0; /* Adjust margin between chat messages */
+}
+#chatcolumn {
+  background-color: black;
+}
+#m{
+  background-color:black;
+  color:white;
+  padding:10px;
+  border: 1px solid #1B1B1B;
+}
+#smiley{
+  width:65px;
+  height:65px;
+}
+h1{
+  color:white;
+}
+h2{
+   color:white; 
+}
+body{
+ background-color:black; 
+}
+  </style>
+
+  </head>
+
+
+<body>
+  <h1>chat with himothy</h1>
+<div id="playscreen">
+  <table>
+    <tr>
+      <ul id="messageboard"></ul>
+      <td id="chatcolumn"style="vertical-align:top">
+        <ol id="leaderboard">
+          
+          </ol>
+         <form id="chat">
+         <input id="m"type="text"/>
+         </form>
+           
+      </td>
+      <td>
+<canvas id="canvas"></canvas>
+</td>
+</tr>
+</table>
+
+    <div class="openBtn">
+      <button class="openButton" onclick="openForm()"><img src="smiley.jpg" id="smiley"></img></button>
+    </div>
+    <div class="loginPopup">
+      <div class="formPopup" id="popupForm">
+          <input type="text" id="name" placeholder="Name" name="name">
+      </div>
+    </div>
+    <script>
+      function openForm() {
+        if(document.getElementById("popupForm").style.display == "block"){
+           document.getElementById("popupForm").style.display = "none";
+        }
+        else{
+           document.getElementById("popupForm").style.display = "block";
+        }
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+    </script>
+  
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="game.js"></script>
+
+
